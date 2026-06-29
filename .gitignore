@@ -1,0 +1,3 @@
+# common git ignore for the whole workspace.
+
+**/target/
