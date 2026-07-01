@@ -53,12 +53,12 @@ is the lesson.
 
 ## Checklist
 
-- [ ] `Arena<T>` owns its values, drops them with itself
-- [ ] alloc returning `&mut T` works for the single-reference case
-- [ ] exercise 2 fails to compile and I wrote down why
-- [ ] exercise 3 fails to compile and I wrote down why
-- [ ] index version (alloc -> usize, get -> Option) works
-- [ ] `get` returns `Option`, never panics on a bad index
-- [ ] zero unsafe, zero clone in core API, no Rc/Arc/RefCell
-- [ ] I can explain OUT LOUD why `&mut T` alloc blocks a second alloc
+- [x] `Arena<T>` owns its values, drops them with itself
+- [x] alloc returning `&mut T` works for the single-reference case
+- [x] exercise 2 fails to compile and I wrote down why
+- [x] exercise 3 fails to compile and I wrote down why
+- [x] index version (alloc -> usize, get -> Option) works
+- [x] `get` returns `Option`, never panics on a bad index
+- [x] zero unsafe, zero clone in core API, no Rc/Arc/RefCell
+- [x] I can explain OUT LOUD why `&mut T` alloc blocks a second alloc
       while the ref is held, and why the index version doesn't
