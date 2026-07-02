@@ -1,0 +1,10 @@
+# comments start with hash, skipped
+# blank lines skipped
+
+[server]
+port = 8080
+host = localhost
+
+[server.tls]
+enabled = true
+ciphers = aes256, chacha20      # comma list -> Vec
