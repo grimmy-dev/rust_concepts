@@ -48,7 +48,7 @@ the Vec<T> impl is the hard one and the whole point:
 
 parsing a Vec means splitting on commas and parsing EACH element via
 T's own parse. generics calling generics. the T: FromConfigValue bound
-is what makes it work — understand why it won't compile without it.
+is what makes it work - understand why it won't compile without it.
 
 ## API
 
@@ -67,8 +67,8 @@ is what makes it work — understand why it won't compile without it.
 ## constraints
 
 - no unwrap in the library
-- no serde, no toml crate — hand-roll it, or the lesson happens for you
-- no nesting beyond [section] and [section.sub] headers — no TOML tables,
+- no serde, no toml crate - hand-roll it, or the lesson happens for you
+- no nesting beyond [section] and [section.sub] headers - no TOML tables,
   no arrays-of-tables, no multiline values. that's the scope wall.
 - dotted keys only go as deep as the section headers you wrote
 
@@ -88,14 +88,14 @@ is what makes it work — understand why it won't compile without it.
 
 ## checklist
 
-- [ ] parses [section] headers, key=value, skips # comments and blanks
-- [ ] dotted keys resolve into nested sections
-- [ ] FromConfigValue implemented for u16, bool, String, PathBuf
-- [ ] Vec<T> impl delegates to T's parse; I know why the bound is required
-- [ ] get -> MissingKey on absent
-- [ ] get_opt -> Ok(None) on absent, Err on garbage
-- [ ] get_or -> default on absent, Err on garbage
-- [ ] FromConfig implemented for a real struct in tests
-- [ ] no unwrap, no serde, no toml crate
-- [ ] out loud: why does impl<T: FromConfigValue> for Vec<T> need the bound,
-      and what breaks without it?
+- [x] parses [section] headers, key=value, skips # comments and blanks
+- [x] dotted keys resolve into nested sections
+- [x] FromConfigValue implemented for u16, bool, String, PathBuf
+- [x] Vec<T> impl delegates to T's parse; I know why the bound is required
+- [x] get -> MissingKey on absent
+- [x] get_opt -> Ok(None) on absent, Err on garbage
+- [x] get_or -> default on absent, Err on garbage
+- [x] FromConfig implemented for a real struct in tests
+- [x] no unwrap, no serde, no toml crate (partial)
+- [x] out loud: why does impl<T: FromConfigValue> for Vec<T> need the bound,
+      and what breaks without it? -> **let the compiler know that the types coming to Vec will have a parse trait and giving the compiler permission to call a method calling inside a impl body itself**
