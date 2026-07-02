@@ -44,7 +44,7 @@ mod tests {
     use super::*;
 
     #[test]
-    // MUST NOT COMPILE 
+    // MUST NOT COMPILE
     fn it_works() {
         let mut arena = Arena::new();
 
@@ -72,7 +72,7 @@ mod tests {
     }
 
     #[test]
-    // MUST NOT COMPILE 
+    // MUST NOT COMPILE
     fn drop_arena_while_holding_reference() {
         let mut arena = Arena::new();
 

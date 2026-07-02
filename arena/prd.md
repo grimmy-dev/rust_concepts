@@ -1,6 +1,6 @@
 # arena
 
-a typed arena allocator library — you hand it values, it owns them in
+a typed arena allocator library - you hand it values, it owns them in
 one contiguous store and hands back a way to reach them. the whole point
 is to learn ownership, borrowing, and lifetimes by fighting the borrow
 checker, not by routing around it. library crate, not a binary.
@@ -12,29 +12,29 @@ checker, not by routing around it. library crate, not a binary.
 an `Arena<T>` owns a backing store. you `alloc` a value into it and get a
 handle back. the arena owns every value until the arena itself is dropped,
 at which point everything inside dies with it. references into the arena
-must not be able to outlive the arena — the compiler enforces this, that
+must not be able to outlive the arena - the compiler enforces this, that
 is the lesson.
 
 ## API
 
-- `Arena::new()` — empty arena
-- `alloc(&mut self, value: T) -> &mut T` — store a value, get a reference into the store
+- `Arena::new()` - empty arena
+- `alloc(&mut self, value: T) -> &mut T` - store a value, get a reference into the store
 - `len(&self) -> usize`
 - `is_empty(&self) -> bool`
-- `get(&self, index: usize) -> Option<&T>` — added in the index phase below
+- `get(&self, index: usize) -> Option<&T>` - added in the index phase below
 
 ## Constraints
 
 - no `unsafe`
 - no `.clone()` in the core API (tests may clone for setup)
-- no `Rc` / `Arc` / `RefCell` — win with the borrow checker, don't escape it
-- `Vec` is the backing store, that's fine — not building allocation from raw memory
+- no `Rc` / `Arc` / `RefCell` - win with the borrow checker, don't escape it
+- `Vec` is the backing store, that's fine - not building allocation from raw memory
 
 ## Exercises (these ARE the project)
 
 1. alloc one value, read it back. proves the happy path.
 2. alloc two values, try to hold both `&mut` references at once.
-   does NOT compile. do not fix it — write a comment explaining WHY
+   does NOT compile. do not fix it - write a comment explaining WHY
    `&mut self` -> `&mut T` makes a second alloc illegal while the first
    ref is alive.
 3. try to make a reference outlive the arena (hold a ref, drop the arena).
